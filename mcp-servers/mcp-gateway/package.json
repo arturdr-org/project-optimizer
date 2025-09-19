@@ -1,0 +1,15 @@
+{
+  "name": "mcp-gateway",
+  "version": "1.0.0",
+  "description": "MCP Gateway para Gemini Stack",
+  "main": "mcpGateway.js",
+  "scripts": {
+    "start": "node mcpGateway.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "gemini-ai-sdk": "^1.0.0",
+    "deepseek-sdk": "^1.0.0",
+    "langchain": "^0.0.100"
+  }
+}

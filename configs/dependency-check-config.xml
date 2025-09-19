@@ -1,0 +1,5 @@
+<!-- Basic OWASP Dependency-Check config -->
+<configuration>
+  <scanPath>.</scanPath>
+  <outputDirectory>dependency-check-report</outputDirectory>
+</configuration>
