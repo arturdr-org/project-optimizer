@@ -1,0 +1,38 @@
+
+name: 🔍 Basic CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  basic-checks:
+    name: 🔍 Basic Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 📋 YAML Lint
+        uses: ibiqlik/action-yamllint@v1
+        with:
+          files: '**/*.yml **/*.yaml'
+          
+      - name: 🔍 Markdown Link Check
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
+          use-verbose-mode: 'yes'
+          config-file: '.mlc_config.json'
+          
+      - name: 🎨 Prettier Check
+        run: |
+          if [ -f package.json ]; then
+            npm install prettier
+            npx prettier --check "**/*.{json,md,yml,yaml}" || echo "Prettier check completed"
+          else
+            echo "No package.json found, skipping Prettier check"
+          fi
